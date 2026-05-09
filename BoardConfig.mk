@@ -31,8 +31,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_HAS_NO_REAL_SDCARD := true
 
-# TWRP specific build flags
-RECOVERY_VARIANT := twrp
+# Recovery build flags
 ALLOW_MISSING_DEPENDENCIES=true
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
@@ -48,11 +47,14 @@ TW_EXTRA_LANGUAGES := true
 TW_USE_NEW_MINADBD := true
 LZMA_RAMDISK_TARGETS := recovery
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/fstab.samsungexynos9810
+
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_PATH)/dtb
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dtb $(DEVICE_PATH)/dtb
 
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
