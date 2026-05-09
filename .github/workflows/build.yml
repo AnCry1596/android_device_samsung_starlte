@@ -1,5 +1,8 @@
 name: PBRP Organization CI
 on:
+  push:
+    branches:
+      - android-12.1
   workflow_dispatch:
     inputs:
       DEPLOY_TYPE:
@@ -12,8 +15,8 @@ on:
         default: 'Sync Latest Source'
 
 env:
-  BUILD_RELEASE_TYPE: ${{ github.event.inputs.DEPLOY_TYPE }}
-  CHANGELOG: ${{ github.event.inputs.ChangeLogs }}
+  BUILD_RELEASE_TYPE: ${{ github.event.inputs.DEPLOY_TYPE || 'TEST' }}
+  CHANGELOG: ${{ github.event.inputs.ChangeLogs || 'Sync Latest Source' }}
   BOT_API: ${{ secrets.BOT_API }}
   GCF_AUTH_KEY: ${{ secrets.GCF_AUTH_KEY }}
   GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
