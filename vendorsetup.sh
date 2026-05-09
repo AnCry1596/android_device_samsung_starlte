@@ -1,2 +1,1 @@
-add_lunch_combo omni_starlte-eng
-
+# Lunch choices are now defined in AndroidProducts.mk via COMMON_LUNCH_CHOICES
